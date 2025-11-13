@@ -166,7 +166,6 @@
   * the project has 2 contributors
     * @utimur `utimur TIm`
     * @AleksandrKrasovski `AleksandrKrasovski Aleksandr`
-## 
 * 🍏 Run tests
   * 🍏 `npm run test:unit`
     * `No changes` since last commit
@@ -192,29 +191,76 @@
       Ran all test suites
       ```
   * 🍏 `npm run test:e2e`
-* [creating first workflow](https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow)
-  * create folders and file
-    * `.github`/
-      * `workflows`/
-        * `github-actions-demo.yml`
-          * the `yml` extension can be named as `.yaml` too
-          * here `yml` or `yaml` is 
-            * not the 
-              * [YAML (Yet Another Multicolumn Layout) CSS framework](https://en.wikipedia.org/wiki/YAML_(framework))
-                * [yaml.de](http://www.yaml.de)
-              * [YML (Yandex Market Language)](https://yandex.ru/support/marketplace/ru/assortment/auto/yml)
-            * [YAML Ain't Markup Language™](https://en.wikipedia.org/wiki/YAML) is a programminglanguage for `config file`s
-              * [yaml.org](https://yaml.org)
-            * the `ain't` is the `to be not`, for example
-              * I `am not` -> I `ain't`
-              * you `are not` -> you `ain't`
-  * сopy the existing code into the `github-actions-demo.yml`
-    * `Now`
-      * you can just copypaste the contents
-      * At this stage you don't need to understand the details of this code. 
-    * `After`
-      * you can learn about this in
-        * [Workflows](https://docs.github.com/en/actions/using-workflows/about-workflows#understanding-the-workflow-file)
-        * [GitHub Actions Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts)
-        * [Understand Github Actions](https://docs.github.com/en/actions/get-started/understand-github-actions)
-  * 
+## Creating first workflow
+* [source](https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow)
+* create folders and file
+  * `.github`/
+    * `workflows`/
+      * `github-actions-demo.yml`
+        * the `yml` extension can be named as `.yaml` too
+        * here `yml` or `yaml` is 
+          * not the 
+            * [YAML (Yet Another Multicolumn Layout) CSS framework](https://en.wikipedia.org/wiki/YAML_(framework))
+              * [yaml.de](http://www.yaml.de)
+            * [YML (Yandex Market Language)](https://yandex.ru/support/marketplace/ru/assortment/auto/yml)
+          * [YAML Ain't Markup Language™](https://en.wikipedia.org/wiki/YAML) is a programminglanguage for `config file`s
+            * [yaml.org](https://yaml.org)
+          * the `ain't` is the `to be not`, for example
+            * I `am not` -> I `ain't`
+            * you `are not` -> you `ain't`
+* `github-actions-demo.yml` 
+  * the one is removed to `oldFiles` folder
+  * the another is taken from `github` to `.github`/`workflows`/
+    * сopy the existing code into the `github-actions-demo.yml`
+      * `Now`
+        * you can just copypaste the contents
+        * At this stage you don't need to understand the details of this code. 
+      * `After`
+        * you can learn about this in
+          * [Workflows](https://docs.github.com/en/actions/using-workflows/ about-workflows#understanding-the-workflow-file)
+          * [GitHub Actions Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts)
+          * [Understand Github Actions](https://docs.github.com/en/actions/get-started/understand-github-actions)
+* commit [c4d9b38] `github-actions-demo is taken from github`
+* `git push origin main`
+* look `github`/`actions`
+  * [1 workflow run](https://github.com/AleksandrKrasovski/CI-ID/actions)
+    * named as `github-actions-demo`
+    * like .github/workflows/`github-actions-demo`.yml
+  * press 
+    * workflow ->`AleksandrKrasovski is testing out GitHub Actions 🚀`
+      * jobs -> `Explore-GitHub-Actions`
+        * look `runs` of testing `scripts`
+## Change the workflo
+* in .github/workflows/`github-actions-demo.yml` add 
+  * `strategy` and 
+  * new `steps` that are included all `scripts` from `package.json`
+  ```yaml
+  //...
+  jobs:
+    Explore-GitHub-Actions:
+      //...
+      strategy:
+        matrix:
+          node-version: [17.x]
+      steps:
+        - user: actions/checkout@v3
+        - name: Staring Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: install modules
+          run: npm install
+        - name: build project
+          run: npm run build
+        - name: build storybook
+          run: npm run build:storybook
+        - name: unit test
+          run: npm run test:unit
+        - name: e2e test
+          run: npm run test:e2e
+        - name: lint code
+          run: npm run lint
+  ```
+* `git commit -m "change the .yml"`
+* `git push origin main`
+
