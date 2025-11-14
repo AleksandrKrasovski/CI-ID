@@ -1,4 +1,4 @@
-# CI-CD (`C`ontiniuosly `I`ntegration & `C`ontiniuosly `D`eploy)
+# CI-CD (`C`ontiniuosly `I`ntegration & `C`ontiniuosly `D`elivery)
 ## First actions
 * sources
   * [youtube](https://www.youtube.com/watch?v=ANj7qUgzNq4&t=527s)
@@ -191,7 +191,7 @@
       Ran all test suites
       ```
   * 🍏 `npm run test:e2e`
-## Creating first workflow
+## Creating first workflow for the case `on: push` project
 * [source](https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow)
 * create folders and file
   * `.github`/
@@ -222,7 +222,7 @@
           * [Understand Github Actions](https://docs.github.com/en/actions/get-started/understand-github-actions)
 * commit [c4d9b38] `github-actions-demo is taken from github`
 * `git push origin main`
-* look `github`/`actions`
+* 🍏 look `github`/`actions`
   * [1 workflow run](https://github.com/AleksandrKrasovski/CI-ID/actions)
     * named as `github-actions-demo`
     * like .github/workflows/`github-actions-demo`.yml
@@ -230,37 +230,64 @@
     * workflow ->`AleksandrKrasovski is testing out GitHub Actions 🚀`
       * jobs -> `Explore-GitHub-Actions`
         * look `runs` of testing `scripts`
-## Change the workflo
-* in .github/workflows/`github-actions-demo.yml` add 
-  * `strategy` and 
-  * new `steps` that are included all `scripts` from `package.json`
-  ```yaml
-  //...
-  jobs:
-    Explore-GitHub-Actions:
-      //...
-      strategy:
-        matrix:
-          node-version: [17.x]
-      steps:
-        - user: actions/checkout@v3
-        - name: Staring Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-        - name: install modules
-          run: npm install
-        - name: build project
-          run: npm run build
-        - name: build storybook
-          run: npm run build:storybook
-        - name: unit test
-          run: npm run test:unit
-        - name: e2e test
-          run: npm run test:e2e
-        - name: lint code
-          run: npm run lint
-  ```
-* `git commit -m "change the .yml"`
-* `git push origin main`
-
+* Change the workflow
+  * in .github/workflows/`github-actions-demo.yml` add 
+    * `strategy` and 
+    * new `steps` that are included all `scripts` from `package.json`
+    ```yaml
+    //...
+    jobs:
+      Explore-GitHub-Actions:
+        //...
+        strategy:
+          matrix:
+            node-version: [17.x]
+        steps:
+          - user: actions/checkout@v3
+          - name: Staring Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+          - name: install modules
+            run: npm install
+          - name: build project
+            run: npm run build
+          - name: build storybook
+            run: npm run build:storybook
+          - name: unit test
+            run: npm run test:unit
+          - name: e2e test
+            run: npm run test:e2e
+          - name: lint code
+            run: npm run lint
+    ```
+  * `git commit -m "change the .yml"`
+  * `git push origin main`
+* 🍏 look `github`/`actions`
+  * [2 workflows run](https://github.com/AleksandrKrasovski/CI-ID/actions)
+  * press 
+    * the new workflow ->`AleksandrKrasovski is testing out GitHubActions  🚀`
+      * jobs -> `Explore-GitHub-Actions`
+        * look `runs` of testing `scripts`
+## Creating the workflow for the case `on: pull request` project
+* in `.github/workflows/github-actions-demo.yml`
+  * it was
+    ```yaml
+    # ...
+    on: [push] # the jobs are tested in any case of push
+    jobs:
+    # ...
+    ```
+  * it is changed to
+    ```yaml
+    # ...
+    on: 
+      push:
+        branches: [ master ] # the jobs are tested only if push to `master`
+      pull_request:
+        branches: [ master ] # the jobs are tested only if push to `master`
+    jobs:
+    # ...
+    ```
+* commit
+## Make a new branch with mistake and push it to GitHub
