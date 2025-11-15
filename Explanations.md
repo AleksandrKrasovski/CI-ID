@@ -289,5 +289,22 @@
     jobs:
     # ...
     ```
-* commit
-## Make a new branch with mistake and push it to GitHub
+* `git commit -m "make on: push & pull_request: branches: [master] in .yml"`   
+## Make: `new branch`, `mistake`, `push`
+* `new branch`
+  * `-b feature/division`
+    ```bash
+    git checkout -b feature/division
+    Switched to a new branch 'feature/division'
+    ```
+  * the project is on `feature/division` branch
+  * legenda
+    * create a new feature in src/helpers/`division/division.js`
+    * make a typo in src/helpers/minus/`minus.js`
+      ```js
+      //export const minus = (a, b) => a - b;
+        export const minus = (a, b) => a / b;
+      ``` 
+      * NOTE: the src/helpers/minus/`minus.test.js` will fail
+  * 
+
