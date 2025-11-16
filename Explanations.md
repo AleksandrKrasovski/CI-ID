@@ -290,14 +290,15 @@
     # ...
     ```
 * `git commit -m "make on: push & pull_request: branches: [master] in .yml"`   
-## Make: `new branch`, `mistake`, `push`
+## Make: `new branch`, `mistake`, `push`, `pull request`
 * `new branch`
-  * `-b feature/division`
+  * branch `feature/division`
     ```bash
     git checkout -b feature/division
     Switched to a new branch 'feature/division'
     ```
-  * the project is on `feature/division` branch
+    * the project is on `feature/division` branch
+* `mistake`
   * legenda
     * create a new feature in src/helpers/`division/division.js`
     * make a typo in src/helpers/minus/`minus.js`
@@ -306,5 +307,34 @@
         export const minus = (a, b) => a / b;
       ``` 
       * NOTE: the src/helpers/minus/`minus.test.js` will fail
-  * 
-
+* `push`
+  * `git commit -m "legenda: add division.js; make a typo in minus.js"`
+  * git push origin `feature/division`
+    * NOTE: git push origin `branchName`
+* `pull request`
+  * `https://github.com/AleksandrKrasovski/CI-ID`
+    * Press `Compare and Pull requests`
+      * Press `New pull request`
+        * `Attention`: Able to merge. These branches can be automatically merged.
+        * Add a title
+        * Add a description
+        * Press `Create pull request`
+* 🔴 github `tests` do not start
+* 🔴 `npm run test:unit`
+  * 🍏 `No changes` since last commit
+    ```bash
+    No tests found related to files changed since last commit.
+    Press (a) to run all tests, or run Jest with (--watchAll).
+    Watch Usage
+      › Press a to run all tests.
+      › Press f to run only failed tests.
+      › Press q to quit watch mode.
+      › Press p to filter by a filename regex pattern.
+      › Press t to filter by a test name regex pattern.
+      › Press Enter to trigger a test run.
+    ```
+  * 🔴 Press `a` to run all tests
+      ```bash
+      🍏 PASS  src/helpers/sum/sum.test.js
+      🔴 FAIL  src/helpers/minus/minus.test.js
+      ```
