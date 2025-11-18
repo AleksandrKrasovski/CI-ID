@@ -1,4 +1,4 @@
-# CI-CD (`C`ontiniuosly `I`ntegration & `C`ontiniuosly `D`elivery)
+# CI-CD (`C`ontinuous `I`ntegration & `C`ontinuous `D`elivery)
 ## First actions
 * sources
   * [youtube](https://www.youtube.com/watch?v=ANj7qUgzNq4&t=527s)
@@ -191,7 +191,7 @@
       Ran all test suites
       ```
   * 🍏 `npm run test:e2e`
-## Creating first workflow for the case `on: push` project
+## CI: Creating first workflow for the case `on: push` project
 * [source](https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow)
 * create folders and file
   * `.github`/
@@ -269,7 +269,7 @@
     * the new workflow ->`AleksandrKrasovski is testing out GitHubActions  🚀`
       * jobs -> `Explore-GitHub-Actions`
         * look `runs` of testing `scripts`
-## Creating the workflow for the case `on: pull request` project
+## CI: Creating the workflow for the case `on: pull request` project
 * in `.github/workflows/github-actions-demo.yml`
   * it was
     ```yaml
@@ -290,7 +290,7 @@
     # ...
     ```
 * `git commit -m "make on: push & pull_request: branches: [master] in .yml"`   
-## Make: `new branch`, `mistake`, `push`, `pull request`
+## CI: Make `new branch`, `mistake`, `push`, `pull request`
 * `new branch`
   * branch `feature/division`
     ```bash
@@ -373,3 +373,28 @@
   * `git commit -m "correct the typo in minus.js" `
   * `git push origin main`
   * 🍏 `github.com/.../CI-ID/actions/runs/...`
+## CD: Deploying the project on `Netlify` hosting
+* [netlify.com](https://www.netlify.com)
+* [netlify](https://app.netlify.com/teams/aleksandrkrasovski/projects) athorization with `github` account
+* press `import existing project`
+* `1. Connect to Git provider`
+  * Install Netlify
+    * Install on your personal account Aleksandr
+    * Only select repositories
+      * `aleksandrkrasovski/CI-ID`
+    * athorization with `mobile github app`
+  * [repo](https://app.netlify.com/start/repos)
+* `2. Select repository`
+  * `aleksandrkrasovski/CI-ID`
+* `3.Configure project and deploy`
+* `npm run build`
+  * get `build` folder
+* Press `Deploy CI-CD`
+  * [fanciful-pastelito-337a2a](https://app.netlify.com/projects/fanciful-pastelito-337a2a/overview)
+    * get `Production: main@bc26339` where `26339` is a base (last) commit
+* Press `fanciful-pastelito-337a2a.netlify.app`
+  * open CI-CD project page as a [netlify.app](https://fanciful-pastelito-337a2a.netlify.app)
+  * this app has a public link
+* make some changes in `src/App.js`
+  * `fontSize: 40, color: 'green'`
+* 
