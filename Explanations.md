@@ -375,4 +375,7 @@
   * correct the typo in src/helpers/minus/`minus.js`
       ```js
       export const minus = (a, b) => a - b;
-      ``` 
+      ```   * `git commit -m "master is replace by main"`
+  * `git commit -m "correct the typo in minus.js" `
+  * `git push origin main`
+  * 🍏 `github.com/.../CI-ID/actions/runs/...`
