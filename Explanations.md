@@ -320,7 +320,7 @@
         * Add a description
         * Press `Create pull request`
 * 🔴 github `tests` do not start
-* 🔴 `npm run test:unit`
+* 🍏 but `npm run test:unit` catches the bug
   * 🍏 `No changes` since last commit
     ```bash
     No tests found related to files changed since last commit.
@@ -338,3 +338,41 @@
       🍏 PASS  src/helpers/sum/sum.test.js
       🔴 FAIL  src/helpers/minus/minus.test.js
       ```
+* 🍏 github `tests` start !!!
+  * `mistake`
+    * make a typo in src/helpers/minus/`minus.js`
+      ```js
+      //export const minus = (a, b) => a - b;
+        export const minus = (a, b) => a / b;
+      ``` 
+  * 🍏 `npm run test:unit` -> `minus.test.js` falles
+  * in .github/workflows/`github-actions-demo.yml` replace `master` by `main`
+    * it was
+      ```yaml
+      # ...
+      on: 
+        push:
+          branches: [ master ]
+        pull_request:
+          branches: [ master ]
+      jobs:
+      # ...
+      ```
+    * it is changed to
+      ```yaml
+      # ...
+      on: 
+        push:
+          branches: [ main ]
+        pull_request:
+          branches: [ main ]
+      jobs:
+      # ...
+      ```
+  * `git commit -m "master is replace by main"`
+  * `git push origin main`
+  * 🍏 `github.com/.../CI-ID/actions/runs/...` catches the bug
+  * correct the typo in src/helpers/minus/`minus.js`
+      ```js
+      export const minus = (a, b) => a - b;
+      ``` 
