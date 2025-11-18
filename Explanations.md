@@ -311,7 +311,7 @@
   * `git commit -m "legenda: add division.js; make a typo in minus.js"`
   * git push origin `feature/division`
     * NOTE: git push origin `branchName`
-* `pull request`
+* 🔴 `pull request`
   * `https://github.com/AleksandrKrasovski/CI-ID`
     * Press `Compare and Pull requests`
       * Press `New pull request`
@@ -319,33 +319,26 @@
         * Add a title
         * Add a description
         * Press `Create pull request`
-* 🔴 github `tests` do not start
-* 🍏 but `npm run test:unit` catches the bug
-  * 🍏 `No changes` since last commit
-    ```bash
-    No tests found related to files changed since last commit.
-    Press (a) to run all tests, or run Jest with (--watchAll).
-    Watch Usage
-      › Press a to run all tests.
-      › Press f to run only failed tests.
-      › Press q to quit watch mode.
-      › Press p to filter by a filename regex pattern.
-      › Press t to filter by a test name regex pattern.
-      › Press Enter to trigger a test run.
-    ```
-  * 🔴 Press `a` to run all tests
+  * 🔴 github `tests` do not start
+  * 🍏 but `npm run test:unit` catches the bug
+    * 🍏 `No changes` since last commit
       ```bash
-      🍏 PASS  src/helpers/sum/sum.test.js
-      🔴 FAIL  src/helpers/minus/minus.test.js
+      No tests found related to files changed since last commit.
+      Press (a) to run all tests, or run Jest with (--watchAll).
+      Watch Usage
+        › Press a to run all tests.
+        › Press f to run only failed tests.
+        › Press q to quit watch mode.
+        › Press p to filter by a filename regex pattern.
+        › Press t to filter by a test name regex pattern.
+        › Press Enter to trigger a test run.
       ```
-* 🍏 github `tests` start !!!
-  * `mistake`
-    * make a typo in src/helpers/minus/`minus.js`
-      ```js
-      //export const minus = (a, b) => a - b;
-        export const minus = (a, b) => a / b;
-      ``` 
-  * 🍏 `npm run test:unit` -> `minus.test.js` falles
+    * 🔴 Press `a` to run all tests
+        ```bash
+        🍏 PASS  src/helpers/sum/sum.test.js
+        🔴 FAIL  src/helpers/minus/minus.test.js
+        ```
+* 🍏 `pull request`
   * in .github/workflows/`github-actions-demo.yml` replace `master` by `main`
     * it was
       ```yaml
@@ -375,7 +368,8 @@
   * correct the typo in src/helpers/minus/`minus.js`
       ```js
       export const minus = (a, b) => a - b;
-      ```   * `git commit -m "master is replace by main"`
+      ```   
+  * `git commit -m "master is replace by main"`
   * `git commit -m "correct the typo in minus.js" `
   * `git push origin main`
   * 🍏 `github.com/.../CI-ID/actions/runs/...`
