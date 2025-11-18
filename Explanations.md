@@ -191,7 +191,7 @@
       Ran all test suites
       ```
   * 🍏 `npm run test:e2e`
-## CI: Creating first workflow for the case `on: push` project
+## `CI` with `Github Actions`: Creating first workflow for the case `on: push` project
 * [source](https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow)
 * create folders and file
   * `.github`/
@@ -269,7 +269,7 @@
     * the new workflow ->`AleksandrKrasovski is testing out GitHubActions  🚀`
       * jobs -> `Explore-GitHub-Actions`
         * look `runs` of testing `scripts`
-## CI: Creating the workflow for the case `on: pull request` project
+## `CI` with `Github Actions`: Creating the workflow for the case `on: pull request` project
 * in `.github/workflows/github-actions-demo.yml`
   * it was
     ```yaml
@@ -290,7 +290,7 @@
     # ...
     ```
 * `git commit -m "make on: push & pull_request: branches: [master] in .yml"`   
-## CI: Make `new branch`, `mistake`, `push`, `pull request`
+## `CI` with `Github Actions`: Make `new branch`, `mistake`, `push`, `pull request`
 * `new branch`
   * branch `feature/division`
     ```bash
@@ -373,7 +373,7 @@
   * `git commit -m "correct the typo in minus.js" `
   * `git push origin main`
   * 🍏 `github.com/.../CI-ID/actions/runs/...`
-## CD: Deploying the project on `Netlify` hosting
+## `CD` with `Netlify` hosting
 * [netlify.com](https://www.netlify.com)
 * [netlify](https://app.netlify.com/teams/aleksandrkrasovski/projects) athorization with `github` account
 * press `import existing project`
@@ -397,4 +397,11 @@
   * this app has a public link
 * make some changes in `src/App.js`
   * `fontSize: 40, color: 'green'`
-* 
+  * `git commit -m "make some changes in src/App.js"`
+    * `[main 80425b4]`
+  * `git push origin main`
+* look `Netlify's` [Production deploys](https://app.netlify.com/projects/fanciful-pastelito-337a2a/overview)
+  * `Production: main@80425b4` Published 
+    * commit `80425b4`
+* 🍏 Press `fanciful-pastelito-337a2a.netlify.app`
+## 🍏 The End
